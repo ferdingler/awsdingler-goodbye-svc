@@ -15,12 +15,12 @@ spec:
         app: goodbye-svc
     spec:
       containers:
-      - image: 962675440091.dkr.ecr.us-west-2.amazonaws.com/goodbye@sha256:ba6658c0b657e5a9e457c1e6c636028a3ca4c7f707b81a9939b05fc3b4703192
+      - image: 962675440091.dkr.ecr.us-west-2.amazonaws.com/goodbye@sha256:dc4b213f4318f390bff7f1a0bab025d5f8b7109f880c46cc2dbb073743d15780
         name: goodbye-svc
         ports:
           - containerPort: 8080
             protocol: TCP
         livenessProbe:
           httpGet:
-            path: /bye
+            path: /
             port: 8080
