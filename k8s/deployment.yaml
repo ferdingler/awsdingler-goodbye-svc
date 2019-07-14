@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: goodbye-svc
+  name: goodbye-svc
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: goodbye-svc
+  template:
+    metadata:
+      labels:
+        app: goodbye-svc
+    spec:
+      containers:
+      - image: 962675440091.dkr.ecr.us-west-2.amazonaws.com/goodbye@sha256:ba6658c0b657e5a9e457c1e6c636028a3ca4c7f707b81a9939b05fc3b4703192
+        name: goodbye-svc
+        ports:
+          - containerPort: 8080
+            protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /bye
+            port: 8080
